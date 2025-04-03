@@ -1,39 +1,33 @@
-# DivvyBike Bikeshare Project
-## Overview
-### Objective
-The goal of this project was to develop a SQL codebase and visual tool to determine the most effective placement of new bike-sharing stations for Chicago's DivvyBike system. Key factors considered included:
+# DivvyBike SQL Queries
+This repo contains two sets of SQL scripts for analyzing DivvyBike data in Chicago.
 
-* **Customer Segmentation**
-* **Socioeconomic Indicators**
-* **Chicago Population Demographics**
-* **Inter-Station Proximity**
-* **Station Proximity to Bike Lanes**
-  
-### Data
-Data for this project came from multiple sources:
+## Demographic & Spatial Queries
 
-* **Bikeshare data**: Queried from a General Assembly database (read-only access).
-* **Socioeconomic and demographic data**: Sourced from Chicago's public data portal.
-  
-Due to the read-only nature of the General Assembly database, bikeshare data was queried, exported as CSV files, and then merged with population data in Tableau for visualization and analysis.
+- **gender_age_zip_income**: Joins Chicago's demographic data with geographic info (zip codes, communities) and calculates age group percentages.
 
-### SQL Queries
-1. `population_zip_community_income_geom`
-Joins population statistics (age) and socioeconomic information (per capita income) by zipcode and community boundaries.
+- **ranked_biklane_distances**: Measures how close bike stations are to bike lanes and sorts them into distance categories.
 
-2. `ranked_buffer_distances`
-Calculates the distance between stations and bikelanes, ranking results from shortest to longest.
+- **main_stations**: Combines bike station details (location, name, usage stats) with geospatial info.
 
-3. `main_stations`
-Maps station location and performance data to corresponding zipcodes and community boundaries.
+- **station_distance**: Computes pairwise distances between stations in a zip, ranks them, and determines directional relationships.
 
-4. `station_distance`
-Measures distances between a station and all other stations within the same zipcode, ranking station pairs by shortest to longest distance in the four cardinal directions. Outputs:
+- **bikelanes_view**: Cleans up bike lane data for easier use.
 
-    * Aggregated min, max, and average distances for station pairs within a zipcode.
-    * Classification of stations as below/above the average distance or as the min/max station within their zipcode.
-  
-### Outputs
+## Customer Segmentation & EDA
 
-* [Blog Post & Visualizations](https://medium.com/@daniel.sagher1/divvybike-expansion-project-dfa427869b93)    
-* [Interactive Dashboard](https://public.tableau.com/app/profile/dan.sagher/viz/DivvyDash_17143258974750/Dashboard2)
+- **Ride Time & Outlier Filtering**: Uses quartiles to remove ride duration outliers.
+
+- **Data Union**: Combines trip data from 2016 to 2019 (with and without outliers).
+
+- **Trip Trends**: Counts trips by gender, user type (Customer vs. Subscriber), and hour (weekday/weekend).
+
+- **Long Ride Analysis**: Counts rides lasting from 6 hours to over 6 months.
+
+- **User Distribution & Demographics**: Shows yearly share of user types and average age/birth year trends.
+
+- S**easonal Trends & Top Stations**: Breaks down trips by season and lists the top 10 busiest stations.
+
+- **Missing Data & Gender Breakdown**: Summarizes null values and computes gender percentages.
+
+### Notes
+These queries are designed to be run one after the other to create views/tables for further analysis.
