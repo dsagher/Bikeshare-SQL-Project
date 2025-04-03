@@ -30,4 +30,5 @@ This repo contains two sets of SQL scripts for analyzing DivvyBike data in Chica
 - **Missing Data & Gender Breakdown**: Summarizes null values and computes gender percentages.
 
 ### Notes
-These queries are designed to be run one after the other to create views/tables for further analysis.
+- These queries are designed to be run one after the other to create views/tables for further analysis. 
+- PostGIS is required.
