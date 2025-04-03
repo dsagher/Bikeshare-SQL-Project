@@ -130,9 +130,9 @@ View: station_distance
 				measures distance in meters, and ranks each pairing by distance
 - CTE distance_stats: Aggregates min, max, avg of distances between paired stations
 -- final query: 
-				- Pulls together relevant station info, stats info
-				- Classifies each station pairing as above or below zip code average
- 				- Determines direction between station pairs
+	- Pulls together relevant station info, stats info
+	- Classifies each station pairing as above or below zip code average
+	- Determines direction between station pairs
 */
 
 create view station_distance as
